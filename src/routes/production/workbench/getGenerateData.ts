@@ -37,19 +37,23 @@ export default router.post(
   }),
   async (req, res) => {
     const { projectId, scriptId } = req.body;
-    const projectData = await u.db("o_project").where("id", projectId).select("id", "videoModel").first();
+    const projectData = await u.db("o_project").where("id", projectId).select("id", "videoModel", "mode").first();
+
     if (!projectData?.videoModel) {
       return res.status(400).json(success("项目未配置视频模型"));
     }
-    const [videoId, videoModelName] = projectData.videoModel.split(":");
-    const models = await u.vendor.getModelList(videoId);
-    const findData = models.find((i: any) => i.modelName == videoModelName);
-    const isRef = findData.mode.every((i: any) => Array.isArray(i));
+    let videoMode = "";
+    try {
+      videoMode = JSON.parse(projectData?.mode ?? "");
+    } catch (e) {
+      videoMode = projectData?.mode ?? "";
+    }
+    const isRef = Array.isArray(videoMode) ? true : false;
 
     const storyboardList = await u.db("o_storyboard").where({ scriptId, projectId }).orderBy("index", "asc");
     await Promise.all(
       storyboardList.map(async (i) => {
-        i.filePath = i.filePath ? await u.oss.getFileUrl(i.filePath) : "";
+        i.filePath = i.filePath ? await u.oss.getSmallImageUrl(i.filePath) : "";
       }),
     );
     const storyboardTrackRecord: Record<number, any[]> = {};
@@ -96,7 +100,7 @@ export default router.post(
             type: i.type,
             fileType: "image" as const,
             sources: "assets",
-            src: i.filePath ? await u.oss.getFileUrl(i.filePath) : "",
+            src: i.filePath ? await u.oss.getSmallImageUrl(i.filePath) : "",
           };
           const sid = i.storyboardId as number;
           if (!otherDataMap[sid]) otherDataMap[sid] = [];
@@ -105,7 +109,6 @@ export default router.post(
       );
     }
 
-    const id = await u.db("o_project").where({ id: projectId }).select("id").first();
     const trackData = await u.db("o_videoTrack").where({ projectId, scriptId });
     const videoList = await u.db("o_video").whereIn(
       "videoTrackId",
@@ -131,8 +134,8 @@ export default router.post(
             seenAssetIds.add(a.id);
             return true;
           });
-          const hasImageAssetData = uniqueAssets.filter(i => i.src)
-          const notHasImageAssetData = uniqueAssets.filter(i => !i.src)
+          const hasImageAssetData = uniqueAssets.filter((i) => i.src);
+          const notHasImageAssetData = uniqueAssets.filter((i) => !i.src);
 
           return [...hasImageAssetData, ...storyboardMedias, ...notHasImageAssetData];
         })(),
@@ -143,6 +146,7 @@ export default router.post(
               id: v.id!,
               src: v.filePath ? await u.oss.getFileUrl(v.filePath) : "",
               state: v.state === "已完成" ? "已完成" : v.state === "生成中" ? "生成中" : v.state === "生成失败" ? "生成失败" : "未生成",
+              errorReason: v?.errorReason ?? "",
             })),
         ),
       });

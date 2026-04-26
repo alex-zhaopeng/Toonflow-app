@@ -107,11 +107,11 @@ With Toonflow, you can complete the entire workflow from text to final video wit
 
 ## 📺 Video Tutorial
 
-[https://www.bilibili.com/video/BV1na6wB6Ea2](https://www.bilibili.com/video/BV1na6wB6Ea2)
-[![Toonflow 8-Minute AI Video Quick Start](./videoCover.png)](https://www.bilibili.com/video/BV1na6wB6Ea2)
+[https://www.bilibili.com/video/BV1oXD7BqEqJ](https://www.bilibili.com/video/BV1oXD7BqEqJ)
+[![Toonflow 12-Minute AI Video Quick Start](./videoCover.jpg)](https://www.bilibili.com/video/BV1oXD7BqEqJ)
 
 **Toonflow: 8-Minute AI Video Quick Start**
-👉 [Click to Watch](https://www.bilibili.com/video/BV1na6wB6Ea2/?share_source=copy_web&vd_source=5b718c25439a901a34c7bc0c1d35b38e)
+👉 [Click to Watch](https://www.bilibili.com/video/BV1oXD7BqEqJ/?share_source=copy_web&vd_source=5b718c25439a901a34c7bc0c1d35b38e)
 
 📱 Scan the QR code to watch on mobile
 
@@ -584,15 +584,31 @@ We sincerely thank the following open-source projects for providing robust suppo
 Thanks to the following organizations/individuals for supporting Toonflow:
 
 <table>
-  <tr>
-    <td>
-      <img src="./sponsored/sophnet.png" alt="Sophgo Logo" width="48">
-    </td>
-    <td>
-      <b>Sophnet</b> for providing computing power sponsorship
-      <a href="[https://www.sophnet.com/](https://www.sophnet.com/)">[Website]</a>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th align="center">Logo</th>
+      <th align="center">Name</th>
+      <th align="center">Support Type</th>
+      <th>Description</th>
+      <th align="center">Website</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center"><img src="./sponsored/sophnet.png" alt="Sophnet Logo" width="48"></td>
+      <td align="center"><b>Sophnet</b></td>
+      <td align="center">💻 Computing Sponsor</td>
+      <td>Committed to creating a faster, more stable, and more cost-effective one-stop model inference API service platform</td>
+      <td align="center"><a href="https://www.sophnet.com/">Website</a></td>
+    </tr>
+    <tr>
+      <td align="center"><img src="./sponsored/atlascloud.png" alt="Atlas Cloud Logo" width="48"></td>
+      <td align="center"><b>Atlas Cloud</b></td>
+      <td align="center">💻 Computing Sponsor</td>
+      <td>The world's first full-modal inference platform built for developers. Run AI across every modality—chat, reasoning, image, audio, video—through one unified API. 300+ models including DeepSeek, Minimax, Seedance 2.0, Flux. OpenAI-compatible, no provider switching. Explore, test, scale inference seamlessly.</td>
+      <td align="center"><a href="https://www.atlascloud.ai/">Website</a></td>
+    </tr>
+  </tbody>
 </table>
 
 For a complete list of third-party dependencies, please refer to `NOTICES.txt`.

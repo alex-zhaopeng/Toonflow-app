@@ -105,11 +105,11 @@ Toonflow — это мощный ИИ-инструмент для создани
 
 ## 📺 Видеоуроки
 
-[https://www.bilibili.com/video/BV1na6wB6Ea2](https://www.bilibili.com/video/BV1na6wB6Ea2)
-[![Toonflow: Быстрый старт за 8 минут](./videoCover.png)](https://www.bilibili.com/video/BV1na6wB6Ea2)
+[https://www.bilibili.com/video/BV1oXD7BqEqJ](https://www.bilibili.com/video/BV1oXD7BqEqJ)
+[![Toonflow: Быстрый старт за 12 минут](./videoCover.jpg)](https://www.bilibili.com/video/BV1oXD7BqEqJ)
 
-**Toonflow: Быстрый старт в AI-видео за 8 минут**
-👉 [Нажмите для просмотра](https://www.bilibili.com/video/BV1na6wB6Ea2/?share_source=copy_web&vd_source=5b718c25439a901a34c7bc0c1d35b38e)
+**Toonflow: Быстрый старт в AI-видео за 12 минут**
+👉 [Нажмите для просмотра](https://www.bilibili.com/video/BV1oXD7BqEqJ/?share_source=copy_web&vd_source=5b718c25439a901a34c7bc0c1d35b38e)
 
 📱 Отсканируйте QR-код для просмотра видео на телефоне
 
@@ -586,15 +586,31 @@ Toonflow распространяется как open-source проект под
 Спасибо следующим организациям/лицам за поддержку Toonflow:
 
 <table>
-  <tr>
-    <td>
-      <img src="./sponsored/sophnet.png" alt="Sophnet Logo" width="48">
-    </td>
-    <td>
-      <b>Sophnet (算能云)</b> Спонсор вычислительных мощностей
-      <a href="[https://www.sophnet.com/](https://www.sophnet.com/)">[Сайт]</a>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th align="center">Logo</th>
+      <th align="center">Название</th>
+      <th align="center">Тип поддержки</th>
+      <th>Описание</th>
+      <th align="center">Сайт</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center"><img src="./sponsored/sophnet.png" alt="Sophnet Logo" width="48"></td>
+      <td align="center"><b>Sophnet</b></td>
+      <td align="center">💻 Спонсор</td>
+      <td>Создание быстрой, стабильной и экономичной платформы API для инференса моделей</td>
+      <td align="center"><a href="https://www.sophnet.com/">Сайт</a></td>
+    </tr>
+    <tr>
+      <td align="center"><img src="./sponsored/atlascloud.png" alt="Atlas Cloud Logo" width="48"></td>
+      <td align="center"><b>Atlas Cloud</b></td>
+      <td align="center">💻 Спонсор</td>
+      <td>Первая в мире мультимодальная платформа вывода. Чат, изображения, видео, аудио — единый API. 300+ моделей, совместимость с OpenAI.</td>
+      <td align="center"><a href="https://www.atlascloud.ai/">Сайт</a></td>
+    </tr>
+  </tbody>
 </table>
 
 Полный список зависимостей третьих сторон находится в файле `NOTICES.txt`.

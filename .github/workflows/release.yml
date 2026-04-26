@@ -17,8 +17,17 @@ env:
 jobs:
   # ==================== Windows 构建 ====================
   build-Windows:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            name: x64
+          - arch: arm64
+            name: ARM64
+
     runs-on: windows-latest
-    name: 构建 Windows
+    name: 构建 Windows (${{ matrix.name }})
 
     steps:
       - name: 检出代码
@@ -33,14 +42,14 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: 打包 Windows 安装程序
-        run: yarn dist:win
+        run: yarn dist:win --${{ matrix.arch }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 上传构建产物
         uses: actions/upload-artifact@v4
         with:
-          name: windows
+          name: windows-${{ matrix.arch }}
           path: dist/*.exe
           retention-days: 7
 
@@ -174,15 +183,14 @@ jobs:
 
             | 操作系统 | 架构 | 文件 | 说明 |
             |---------|------|------|------|
-            | 🪟 Windows | 通用 | `ToonFlow-*-win-setup.exe` | **推荐**，适用于大多数 Windows 电脑 |
-            | 🪟 Windows | x64 | `ToonFlow-*-win-x64-setup.exe` | 适用于 64 位 Windows 电脑 |
+            | 🪟 Windows | x64 | `ToonFlow-*-win-x64-setup.exe` | **推荐**，适用于大多数 Windows 电脑 |
             | 🪟 Windows | ARM64 | `ToonFlow-*-win-arm64-setup.exe` | 适用于 ARM 架构 Windows 设备 |
             | 🍎 macOS | Apple Silicon | `ToonFlow-*-mac-arm64.dmg` | 适用于 M1/M2/M3/M4 芯片的 Mac |
             | 🍎 macOS | Intel | `ToonFlow-*-mac-x64.dmg` | 适用于 Intel 芯片的 Mac |
-            | 🐧 Linux | x86_64 | `ToonFlow-*-linux-x86_64.AppImage` | 适用于大多数 Linux 发行版 |
+            | 🐧 Linux | x64 | `ToonFlow-*-linux-x86_64.AppImage` | 适用于大多数 Linux 发行版 |
             | 🐧 Linux | ARM64 | `ToonFlow-*-linux-arm64.AppImage` | 适用于 ARM 架构的 Linux 设备 |
 
-            > 💡 **不确定选哪个？** Windows 用户通常选 **win-setup.exe**；Mac 用户查看「关于本机」：M 系列芯片选 **arm64.dmg**，Intel 选 **x64.dmg**。
+            > 💡 **不确定选哪个？** Windows 用户通常选 **win-x64-setup.exe**；Mac 用户查看「关于本机」：M 系列芯片选 **arm64.dmg**，Intel 选 **x64.dmg**。
 
             ## 🚀 安装说明
 
